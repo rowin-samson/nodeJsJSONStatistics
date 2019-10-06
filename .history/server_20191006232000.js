@@ -70,7 +70,7 @@ var statictiscOne = function processStatistics(){
         stats.output.push(data);
         webId.push(jsonObj[myKey].websiteId);
     }else{
-      webId.push(jsonObj[myKey].websiteId);
+      // webId.push(jsonObj[myKey].websiteId);
       console.log('existing ' + jsonObj[myKey].websiteId)
     }
 

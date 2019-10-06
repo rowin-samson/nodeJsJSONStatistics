@@ -53,29 +53,22 @@ var statictiscOne = function processStatistics(){
     // jsonData
   );
 
-  var stats = {
-    output: []
-  };
+  let stats = {};
   let webId = [];
   console.log(jsonObj);
   for(var myKey in jsonObj) {
-    if( webId.indexOf(jsonObj[myKey].websiteId) ){
-      console.log('not existing ' + jsonObj[myKey].websiteId);
+    if( !webId.indexOf(jsonObj[myKey].websiteId)){
         var data = {
-          websiteId: jsonObj[myKey].websiteId,
-          chats: jsonObj[myKey].chats,
+          websiteId = jsonObj[myKey].websiteId,
+          chats: jsonObj[myKey].chats.chats,
           missedChats: jsonObj[myKey].missedChats
         }
-        // console.log(data);
-        stats.output.push(data);
-        webId.push(jsonObj[myKey].websiteId);
+        stats.push(data);
     }else{
-      webId.push(jsonObj[myKey].websiteId);
-      console.log('existing ' + jsonObj[myKey].websiteId)
+
     }
 
-    var json = JSON.stringify(stats, null, 4);
-    // console.log(json)
+    
 
     // console.log("key:"+myKey+", value:"+jsonObj[myKey].websiteId);
 
@@ -83,7 +76,7 @@ var statictiscOne = function processStatistics(){
      
  }
 
-//  console.log(stats);
+ console.log(stats);
 }
 
 function groupBy(key, jsonObj) {

@@ -53,37 +53,11 @@ var statictiscOne = function processStatistics(){
     // jsonData
   );
 
-  var stats = {
-    output: []
-  };
-  let webId = [];
-  console.log(jsonObj);
-  for(var myKey in jsonObj) {
-    if( webId.indexOf(jsonObj[myKey].websiteId) ){
-      console.log('not existing ' + jsonObj[myKey].websiteId);
-        var data = {
-          websiteId: jsonObj[myKey].websiteId,
-          chats: jsonObj[myKey].chats,
-          missedChats: jsonObj[myKey].missedChats
-        }
-        // console.log(data);
-        stats.output.push(data);
-        webId.push(jsonObj[myKey].websiteId);
-    }else{
-      webId.push(jsonObj[myKey].websiteId);
-      console.log('existing ' + jsonObj[myKey].websiteId)
-    }
-
-    var json = JSON.stringify(stats, null, 4);
-    // console.log(json)
-
-    // console.log("key:"+myKey+", value:"+jsonObj[myKey].websiteId);
-
+  for(var myKey in jsonData) {
+    console.log("key:"+myKey+", value:"+jsonObj[myKey]);
     // console.log(groupBy(jsonObj[myKey].websiteId,  jsonObj[myKey]));
      
  }
-
-//  console.log(stats);
 }
 
 function groupBy(key, jsonObj) {

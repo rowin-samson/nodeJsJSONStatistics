@@ -59,7 +59,7 @@ var statictiscOne = function processStatistics(){
   let webId = [];
   console.log(jsonObj);
   for(var myKey in jsonObj) {
-    if( webId.indexOf(jsonObj[myKey].websiteId) ){
+    if( !webId.indexOf(jsonObj[myKey].websiteId) ){
       console.log('not existing ' + jsonObj[myKey].websiteId);
         var data = {
           websiteId: jsonObj[myKey].websiteId,
@@ -68,14 +68,13 @@ var statictiscOne = function processStatistics(){
         }
         // console.log(data);
         stats.output.push(data);
-        webId.push(jsonObj[myKey].websiteId);
+       
     }else{
       webId.push(jsonObj[myKey].websiteId);
-      console.log('existing ' + jsonObj[myKey].websiteId)
+      // console.log('existing ' + jsonObj[myKey].websiteId)
     }
 
-    var json = JSON.stringify(stats, null, 4);
-    // console.log(json)
+    console.log(stats)
 
     // console.log("key:"+myKey+", value:"+jsonObj[myKey].websiteId);
 

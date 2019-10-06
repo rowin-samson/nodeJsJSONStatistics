@@ -34,66 +34,22 @@ var statictiscOne = function processStatistics(){
   // Object.keys(jsonObj).forEach(key => {
   //   console.log(jsonObj[key]);
   // });
-
-  
-//  groupBy('websiteId'. jsonObj); 
-
- const groupBy = key => array =>
-  array.reduce((objectsByKeyValue, obj) => {
-    const value = obj[key];
-    objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
-    return objectsByKeyValue;
-  }, {});
-
-  const groupByBrand = groupBy('websiteId');
-  let jsonData = JSON.stringify({
-    carsByBrand: groupByBrand(jsonObj)
-  }, null, 2);
-  console.log(
-    // jsonData
-  );
-
-  var stats = {
-    output: []
-  };
-  let webId = [];
-  console.log(jsonObj);
   for(var myKey in jsonObj) {
-    if( webId.indexOf(jsonObj[myKey].websiteId) ){
-      console.log('not existing ' + jsonObj[myKey].websiteId);
-        var data = {
-          websiteId: jsonObj[myKey].websiteId,
-          chats: jsonObj[myKey].chats,
-          missedChats: jsonObj[myKey].missedChats
-        }
-        // console.log(data);
-        stats.output.push(data);
-        webId.push(jsonObj[myKey].websiteId);
-    }else{
-      webId.push(jsonObj[myKey].websiteId);
-      console.log('existing ' + jsonObj[myKey].websiteId)
-    }
-
-    var json = JSON.stringify(stats, null, 4);
-    // console.log(json)
-
     // console.log("key:"+myKey+", value:"+jsonObj[myKey].websiteId);
-
     // console.log(groupBy(jsonObj[myKey].websiteId,  jsonObj[myKey]));
      
  }
-
-//  console.log(stats);
+ groupBy('websiteId'. jsonObj); 
 }
 
-function groupBy(key, jsonObj) {
-  console.log(jsonObj);
+function groupBy(key, array) {
+  console.log(array);
   var result = [];
-  for (var i = 0; i < jsonObj.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     var added = false;
     for (var j = 0; j < result.length; j++) {
-      if (result[j][key] == jsonObj[i][key]) {
-        result[j].items.push(jsonObj[i]);
+      if (result[j][key] == array[i][key]) {
+        result[j].items.push(array[i]);
         added = true;
         break;
       }
@@ -101,7 +57,7 @@ function groupBy(key, jsonObj) {
     if (!added) {
       var entry = {items: []};
       entry[key] = array[i][key];
-      entry.items.push(jsonObj[i]);
+      entry.items.push(array[i]);
       result.push(entry);
     }
   }

@@ -59,7 +59,7 @@ var statictiscOne = function processStatistics(){
   let webId = [];
   console.log(jsonObj);
   for(var myKey in jsonObj) {
-    if( webId.indexOf(jsonObj[myKey].websiteId) ){
+    if( !webId.indexOf(jsonObj[myKey].websiteId) ){
       console.log('not existing ' + jsonObj[myKey].websiteId);
         var data = {
           websiteId: jsonObj[myKey].websiteId,
