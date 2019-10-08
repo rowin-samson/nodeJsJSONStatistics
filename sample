@@ -56,7 +56,8 @@ var statictiscOne = function processStatistics(){
         // console.log(webId);
     }else{
       
-      let dData = stats['output'].filter( d => d.websiteId === '4f8b36d00000000000000007');
+      let dData = stats['output'].filter( d => d.websiteId === jsonObj[myKey].websiteId);
+      
      if( dData ){
        console.log( 'json ' + jsonObj[myKey].missedChats);
        console.log( 'single ' + dData[0].missedChats );
@@ -64,6 +65,7 @@ var statictiscOne = function processStatistics(){
         let cChats = dData[0].chats + jsonObj[myKey].chats;
       // console.log("running total " + cMissedChats);
         dData[0].missedChats = cMissedChats;
+        dData[0].chats = cChats;
      }
        
     }
@@ -73,5 +75,3 @@ var statictiscOne = function processStatistics(){
       console.log(json);
 }
  
-
-
